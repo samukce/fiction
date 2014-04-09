@@ -7,8 +7,12 @@ import org.junit.Test;
 public class TextByPosition {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void shouldSplitTheFields() {
+        MockPositional mockPositional = new MockPositional("123456John Foo");
+
+        assertEquals("123456", mockPositional.getTrack().getValue());
+        assertEquals("John Foo", mockPositional.getName().getValue());
 	}
 
 }
+
