@@ -16,8 +16,8 @@ public class MockPositional extends PositionalLine {
 	}
 
 	protected void configure() {
-		this.track = new PositionalField(this, 1, 6);
-		this.name = new PositionalField(this, 7, 8);
+		this.track = new PositionalField(this, 1, 6, true);
+		this.name = new PositionalField(this, 7, 8, false);
 	}
 
 	public PositionalField getTrack() {

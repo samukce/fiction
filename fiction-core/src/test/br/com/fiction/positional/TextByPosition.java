@@ -45,5 +45,28 @@ public class TextByPosition {
 
         assertEquals("123456John Foo", mockPositional.getLineText());
 	}
+	
+	@Test
+	public void shouldAlignToRightTrackField() {
+        MockPositional mockPositional = new MockPositional();
+        mockPositional.getTrack().setValue("123");
+        mockPositional.getName().setValue("John Foo");
+        
+        mockPositional.synchronizeObjectToText();
+
+        assertEquals("   123John Foo", mockPositional.getLineText());
+	}
+	
+	@Test
+	public void shouldFillUntilEnd() {
+        MockPositional mockPositional = new MockPositional();
+        mockPositional.getTrack().setValue("123");
+        mockPositional.getName().setValue("John");
+        
+        mockPositional.synchronizeObjectToText();
+
+        assertEquals("   123John    ", mockPositional.getLineText());
+	}
+
 }
 

@@ -5,10 +5,12 @@ public class PositionalField {
 	
 	private final int length;
 	private final int initialPosition;
+	private final boolean alighRight;
 	
 	private String value;
 
-	public PositionalField(PositionalLine positionalLine, int initialPosition, int length) {
+	public PositionalField(PositionalLine positionalLine, int initialPosition, int length, boolean alighRight) {
+		this.alighRight = alighRight;
 		this.length = length;
 		this.initialPosition = initialPosition;
 		
@@ -21,6 +23,14 @@ public class PositionalField {
 	}
 	
 	public String getValue() {
+		while (value.length() < length) {
+			if (alighRight) {
+				value = " " + value;
+			} else{
+				value += " ";
+			}
+		}
+		
 		return value;
 	}
 	
