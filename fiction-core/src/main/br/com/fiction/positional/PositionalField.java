@@ -16,16 +16,22 @@ public class PositionalField {
 		this.positionalLine.Add(this);
 	}
 
-	public String getValue() {
-		return value;
-	}
-
 	public int getLength() {
 		return length;
 	}
 	
+	public String getValue() {
+		return value;
+	}
+	
 	public void setValue(String value) {
-		this.value = value;
+		String valueField = value;
+		
+		if (value.length() > length){
+			valueField = value.substring(0, length);
+		}
+			
+		this.value = valueField;
 	}
 
 	public int getInitialPosition() {

@@ -34,5 +34,16 @@ public class TextByPosition {
 
         assertEquals("123456John Foo", mockPositional.getLineText());
 	}
+	
+	@Test
+	public void shouldTruncateIfValueFromFieldGreaterThanConfigured() {
+        MockPositional mockPositional = new MockPositional();
+        mockPositional.getTrack().setValue("12345600000000000");
+        mockPositional.getName().setValue("John Foooooooooooo");
+        
+        mockPositional.synchronizeObjectToText();
+
+        assertEquals("123456John Foo", mockPositional.getLineText());
+	}
 }
 
