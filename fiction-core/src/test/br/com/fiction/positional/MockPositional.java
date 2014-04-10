@@ -7,9 +7,15 @@ public class MockPositional extends PositionalLine {
 	private PositionalField track;
 	private PositionalField name;
 	
+	public MockPositional() {
+		super();
+	}
+	
 	public MockPositional(String lineText)  {
 		super(lineText);
-		
+	}
+
+	protected void configure() {
 		this.track = new PositionalField(this, 1, 6);
 		this.name = new PositionalField(this, 7, 8);
 	}
@@ -21,6 +27,4 @@ public class MockPositional extends PositionalLine {
 	public PositionalField getName() {
 		return name;
 	}
-
-	
 }

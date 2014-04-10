@@ -23,5 +23,16 @@ public class TextByPosition {
         assertEquals("123456", mockPositional.getTrack().getValue());
         assertEquals("John Foo", mockPositional.getName().getValue());
 	}
+	
+	@Test
+	public void shouldSynchronizeObjectToText(){
+        MockPositional mockPositional = new MockPositional();
+        mockPositional.getTrack().setValue("123456");
+        mockPositional.getName().setValue("John Foo");
+        
+        mockPositional.synchronizeObjectToText();
+
+        assertEquals("123456John Foo", mockPositional.getLineText());
+	}
 }
 
