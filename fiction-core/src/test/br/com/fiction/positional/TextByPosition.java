@@ -16,7 +16,7 @@ public class TextByPosition {
 	}
 	
 	@Test
-	public void shouldTruncateIfTextGreaterThanTotalConfigured(){
+	public void shouldTruncateIfTextGreaterThanTotalConfigured() {
         MockPositional mockPositional = new MockPositional("123456John Foooooooo");
         mockPositional.synchronizeTextToObject();
 
@@ -25,7 +25,7 @@ public class TextByPosition {
 	}
 	
 	@Test
-	public void shouldSynchronizeObjectToText(){
+	public void shouldSynchronizeObjectToText() {
         MockPositional mockPositional = new MockPositional();
         mockPositional.getTrack().setValue("123456");
         mockPositional.getName().setValue("John Foo");
