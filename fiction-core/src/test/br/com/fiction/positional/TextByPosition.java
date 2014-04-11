@@ -68,5 +68,15 @@ public class TextByPosition {
         assertEquals("   123John    ", mockPositional.getLineText());
 	}
 
+	@Test
+	public void shouldIgnoreTheResgitrationOrderOfTheFields() {
+        MockNoOrder mockNoOrder = new MockNoOrder();
+        mockNoOrder.getTrack().setValue("123");
+        mockNoOrder.getName().setValue("John");
+        
+        mockNoOrder.synchronizeObjectToText();
+
+        assertEquals("   123John    ", mockNoOrder.getLineText());
+	}
 }
 

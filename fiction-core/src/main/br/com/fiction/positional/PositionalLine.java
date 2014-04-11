@@ -1,11 +1,14 @@
 package main.br.com.fiction.positional;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public abstract class PositionalLine {
 	private String lineText;
 	
-	private final ArrayList<PositionalField> positionalFields = new ArrayList<PositionalField>();
+	private final List<PositionalField> positionalFields = new ArrayList<PositionalField>();
 
 	public PositionalLine() {
 		configure();
@@ -17,9 +20,23 @@ public abstract class PositionalLine {
 		configure();
 	}
 	
-	protected abstract void configure(); 
+	protected void configure() {
+		registerFields();
+		orderFields();
+	}
+	
+	private void orderFields() {
+		Collections.sort(positionalFields, new Comparator<PositionalField>() {
+	        @Override
+	        public int compare(PositionalField  field1, PositionalField field2){
+	            return  field1.getInitialPosition().compareTo(field2.getInitialPosition());
+	        }
+	    });
+	}
+	
+	protected abstract void registerFields(); 
 
-	public void Add(PositionalField positionalField) {
+	public void add(PositionalField positionalField) {
 		positionalFields.add(positionalField);
 	}
 

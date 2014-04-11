@@ -15,7 +15,7 @@ public class PositionalField {
 		this.initialPosition = initialPosition;
 		
 		this.positionalLine = positionalLine;
-		this.positionalLine.Add(this);
+		this.positionalLine.add(this);
 	}
 
 	public int getLength() {
@@ -26,7 +26,7 @@ public class PositionalField {
 		while (value.length() < length) {
 			if (alighRight) {
 				value = " " + value;
-			} else{
+			} else {
 				value += " ";
 			}
 		}
@@ -44,7 +44,7 @@ public class PositionalField {
 		this.value = valueField;
 	}
 
-	public int getInitialPosition() {
+	public Integer getInitialPosition() {
 		return this.initialPosition;
 	}
 }
