@@ -6,7 +6,6 @@ public class DelimitedField extends Field {
 
 	private final int index;
 	private final String delimiter;
-	private String value;
 	
 	public DelimitedField(DelimitedLine delimitedLine, int index, String delimiter) {
 		super(delimitedLine);
@@ -15,14 +14,6 @@ public class DelimitedField extends Field {
 		this.delimiter = delimiter;
 	}
 	
-	public String getValue() {
-		return value;
-	}
-	
-	public void setValue(String value) {
-		this.value = value;
-	}
-
 	public String getDelimiter() {
 		return delimiter;
 	}
