@@ -1,18 +1,18 @@
 package main.br.com.fiction.delimited;
 
-public class DelimitedField {
-	private final DelimitedLine delimitedLine;
+import main.br.com.fiction.Field;
+
+public class DelimitedField extends Field {
 
 	private final int index;
 	private final String delimiter;
 	private String value;
 	
 	public DelimitedField(DelimitedLine delimitedLine, int index, String delimiter) {
+		super(delimitedLine);
+		
 		this.index = index;
 		this.delimiter = delimiter;
-		
-		this.delimitedLine = delimitedLine;
-		this.delimitedLine.add(this);
 	}
 	
 	public String getValue() {

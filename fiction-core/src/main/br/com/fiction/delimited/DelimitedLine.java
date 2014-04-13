@@ -3,48 +3,32 @@ package main.br.com.fiction.delimited;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class DelimitedLine {
-	private String lineText;
-	
-	private final List<DelimitedField> delimitedFields = new ArrayList<DelimitedField>();
+import main.br.com.fiction.Field;
+import main.br.com.fiction.Line;
+
+public abstract class DelimitedLine extends Line {
+	private List<DelimitedField> delimitedFields;
 
 	public DelimitedLine() {
-		configure();
+		super();
 	}
 	
-	public DelimitedLine(String lineText) {
-		this.lineText = lineText;
+	public DelimitedLine(String lineText)  {
+		super(lineText);
+	}
+	
+	private List<DelimitedField> getDelimitedFields(){
+		if (delimitedFields == null)
+			delimitedFields = new ArrayList<DelimitedField>();
 		
-		configure();
+		return delimitedFields;
 	}
 	
-	protected void configure() {
-		registerFields();
+	public void add(Field positionalField) {
+		getDelimitedFields().add((DelimitedField)positionalField);
 	}
 	
-	protected abstract void registerFields(); 
-
-	public void add(DelimitedField positionalField) {
-		delimitedFields.add(positionalField);
-	}
-
-	public String getLineText(){
-		return lineText;
-	}
-	
-	public void setLineText(String lineText){
-		this.lineText = lineText;
-	}
-	
-	public void synchronizeTextToObject() {
-		textToObject();
-	}
-	
-	public void synchronizeObjectToText() {
-		objectToText();
-	}
-	
-	private void objectToText() {
+	protected void objectToText() {
 		StringBuilder newText = new StringBuilder();
 
         for (DelimitedField delimitedField : delimitedFields) {
@@ -56,12 +40,12 @@ public abstract class DelimitedLine {
         		newText.append(delimitedField.getDelimiter());
         }
         
-        lineText = newText.toString();
+        setLineText(newText.toString());
     }
 	
-	private void textToObject() {
+	protected void textToObject() {
 		for (DelimitedField delimitedField : delimitedFields) {
-			String value = getFieldValue(delimitedField.getIndex(), delimitedField.getDelimiter(), lineText);
+			String value = getFieldValue(delimitedField.getIndex(), delimitedField.getDelimiter(), getLineText());
 			
 			delimitedField.setValue(value);
         }
