@@ -45,6 +45,18 @@ public abstract class DelimitedLine {
 	}
 	
 	private void objectToText() {
+		StringBuilder newText = new StringBuilder();
+
+        for (DelimitedField delimitedField : delimitedFields) {
+        	newText.append(delimitedField.getValue());
+        	
+        	int indexDelimited = delimitedFields.indexOf(delimitedField);
+        	
+        	if (indexDelimited < delimitedFields.size() - 1)
+        		newText.append(delimitedField.getDelimiter());
+        }
+        
+        lineText = newText.toString();
     }
 	
 	private void textToObject() {

@@ -25,6 +25,8 @@ public abstract class PositionalLine {
 		orderFields();
 	}
 	
+	protected abstract void registerFields();
+	
 	private void orderFields() {
 		Collections.sort(positionalFields, new Comparator<PositionalField>() {
 	        @Override
@@ -33,8 +35,6 @@ public abstract class PositionalLine {
 	        }
 	    });
 	}
-	
-	protected abstract void registerFields(); 
 
 	public void add(PositionalField positionalField) {
 		positionalFields.add(positionalField);
