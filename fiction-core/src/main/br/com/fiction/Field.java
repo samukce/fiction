@@ -3,7 +3,7 @@ package main.br.com.fiction;
 public class Field {
 	private final Line line;
 
-	private String value;
+	protected String value;
 	
 	public Field(Line line) {
 		this.line = line;

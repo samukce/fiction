@@ -1,21 +1,19 @@
 package main.br.com.fiction.positional;
 
-public class PositionalField {
-	private final PositionalLine positionalLine;
-	
+import main.br.com.fiction.Field;
+import main.br.com.fiction.Line;
+
+public class PositionalField extends Field {
 	private final int length;
 	private final int initialPosition;
 	private final boolean alighRight;
 	
-	private String value;
-
-	public PositionalField(PositionalLine positionalLine, int initialPosition, int length, boolean alighRight) {
+	public PositionalField(Line line, int initialPosition, int length, boolean alighRight) {
+		super(line);
+		
 		this.alighRight = alighRight;
 		this.length = length;
 		this.initialPosition = initialPosition;
-		
-		this.positionalLine = positionalLine;
-		this.positionalLine.add(this);
 	}
 
 	public int getLength() {
@@ -34,14 +32,14 @@ public class PositionalField {
 		return value;
 	}
 	
-	public void setValue(String value) {
-		String valueField = value;
+	public void setValue(String valueParameter) {
+		String valueField = valueParameter;
 		
-		if (value.length() > length){
-			valueField = value.substring(0, length);
+		if (valueParameter.length() > length){
+			valueField = valueParameter.substring(0, length);
 		}
 			
-		this.value = valueField;
+		value = valueField;
 	}
 
 	public Integer getInitialPosition() {

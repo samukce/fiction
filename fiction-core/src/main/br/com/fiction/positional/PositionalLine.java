@@ -5,19 +5,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class PositionalLine {
-	private String lineText;
-	
-	private final List<PositionalField> positionalFields = new ArrayList<PositionalField>();
+import main.br.com.fiction.Field;
+import main.br.com.fiction.Line;
 
+public abstract class PositionalLine extends Line {
+	private List<PositionalField> positionalFields;
+	
 	public PositionalLine() {
-		configure();
+		super();
 	}
 	
 	public PositionalLine(String lineText) {
-		this.lineText = lineText;
-		
-		configure();
+		super(lineText);
 	}
 	
 	protected void configure() {
@@ -36,18 +35,18 @@ public abstract class PositionalLine {
 	    });
 	}
 
-	public void add(PositionalField positionalField) {
-		positionalFields.add(positionalField);
+	protected List<PositionalField> getPositionalFields() {
+		if (positionalFields == null){
+			positionalFields = new ArrayList<PositionalField>();
+		}
+		
+		return positionalFields;
+	}
+	
+	public void add(Field positionalField) {
+		getPositionalFields().add((PositionalField)positionalField);
 	}
 
-	public String getLineText(){
-		return lineText;
-	}
-	
-	public void setLineText(String lineText){
-		this.lineText = lineText;
-	}
-	
 	public void synchronizeTextToObject() {
 		textToObject();
 	}
@@ -56,17 +55,19 @@ public abstract class PositionalLine {
 		objectToText();
 	}
 	
-	private void objectToText() {
+	protected void objectToText() {
         StringBuilder newText = new StringBuilder();
 
         for (PositionalField positionalField : positionalFields) {
         	newText.append(positionalField.getValue());
         }
         
-        lineText = newText.toString();
+        setLineText(newText.toString());
     }
 	
-	private void textToObject() {
+	protected void textToObject() {
+		String valueLineText = getLineText();
+		
 		for (PositionalField positionalField : positionalFields) {
 
 			int lengthField = positionalField.getLength();
@@ -75,7 +76,7 @@ public abstract class PositionalLine {
 			
 			int end = initialPosition + lengthField;
 			
-			String valueField = lineText.substring(initialPosition, end);
+			String valueField = valueLineText.substring(initialPosition, end);
 			
 			positionalField.setValue(valueField);
 		}

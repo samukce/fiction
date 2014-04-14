@@ -17,15 +17,15 @@ public abstract class DelimitedLine extends Line {
 		super(lineText);
 	}
 	
-	private List<DelimitedField> getDelimitedFields(){
+	public void add(Field positionalField) {
+		getDelimitedFields().add((DelimitedField)positionalField);
+	}
+	
+	public List<DelimitedField> getDelimitedFields() {
 		if (delimitedFields == null)
 			delimitedFields = new ArrayList<DelimitedField>();
 		
 		return delimitedFields;
-	}
-	
-	public void add(Field positionalField) {
-		getDelimitedFields().add((DelimitedField)positionalField);
 	}
 	
 	protected void objectToText() {

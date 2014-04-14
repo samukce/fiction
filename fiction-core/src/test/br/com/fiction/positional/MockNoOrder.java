@@ -19,7 +19,7 @@ public class MockNoOrder extends PositionalLine {
 		this.name = new PositionalField(this, 7, 8, false);
 		this.track = new PositionalField(this, 1, 6, true);
 	}
-
+	
 	public PositionalField getTrack() {
 		return track;
 	}
@@ -27,4 +27,5 @@ public class MockNoOrder extends PositionalLine {
 	public PositionalField getName() {
 		return name;
 	}
+
 }
