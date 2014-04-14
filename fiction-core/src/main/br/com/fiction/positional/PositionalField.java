@@ -43,6 +43,6 @@ public class PositionalField extends Field {
 	}
 
 	public Integer getInitialPosition() {
-		return this.initialPosition;
+		return initialPosition;
 	}
 }

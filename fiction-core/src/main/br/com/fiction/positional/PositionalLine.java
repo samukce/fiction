@@ -20,11 +20,9 @@ public abstract class PositionalLine extends Line {
 	}
 	
 	protected void configure() {
-		registerFields();
+		super.configure();
 		orderFields();
 	}
-	
-	protected abstract void registerFields();
 	
 	private void orderFields() {
 		Collections.sort(positionalFields, new Comparator<PositionalField>() {
