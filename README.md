@@ -14,7 +14,7 @@ It abstracts the handling of texts that have a predefined formation.
 
 #### Text defined by position
 * The message there will be treated: "123123JONHFOO";
-* The name field begins at 1 position and has 6 size.
+* The id field begins at 1 position and has 6 size;
 * The name field begins at 7 position and has 7 size.
 
 ```java
@@ -23,4 +23,17 @@ mockPositional.synchronizeTextToObject();
 
 assertEquals("123456", mockPositional.getTrack().getValue());
 assertEquals("John Foo", mockPositional.getName().getValue());
+```
+
+#### Text defined by delimiters
+* The message there will be treated: "OBX|1|NM|Body Height||1.80";
+* The description field is in the 4 position separated by slashes;
+* The result field is in the 6 position separated by slashes.
+
+```java
+MockDelimited mockDelimited = new MockDelimited("OBX|1|NM|Body Height||1.80");
+mockDelimited.synchronizeTextToObject();
+
+assertEquals("Body Height", mockDelimited.getDescription().getValue());
+assertEquals("1.80", mockDelimited.getResult().getValue());
 ```
