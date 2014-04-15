@@ -37,3 +37,7 @@ mockDelimited.synchronizeTextToObject();
 assertEquals("Body Height", mockDelimited.getDescription().getValue());
 assertEquals("1.80", mockDelimited.getResult().getValue());
 ```
+
+The first stable version will be available soon!
+Feel free for contribute and to use it. Enjoy!
+Any suggestions/bugs/improvements send email to samuel.p.araujo@gmail.com 
