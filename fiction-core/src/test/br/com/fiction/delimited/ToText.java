@@ -16,6 +16,16 @@ public class ToText {
 
         assertEquals("123456|John Foo", mockDelimited.getLineText());
 	}
-	
+
+	@Test
+	public void shouldBeEmptyFieldNotFilled() {
+        MockDelimited mockDelimited = new MockDelimited();
+        mockDelimited.getTrack().setValue("123456");
+        
+        mockDelimited.synchronizeObjectToText();
+
+        assertEquals("123456|", mockDelimited.getLineText());
+	}
+
 }
 
