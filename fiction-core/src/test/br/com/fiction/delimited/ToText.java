@@ -11,8 +11,6 @@ public class ToText {
         MockDelimited mockDelimited = new MockDelimited();
         mockDelimited.getTrack().setValue("123456");
         mockDelimited.getName().setValue("John Foo");
-        
-        mockDelimited.synchronizeObjectToText();
 
         assertEquals("123456|John Foo", mockDelimited.getLineText());
 	}
@@ -22,8 +20,6 @@ public class ToText {
         MockDelimited mockDelimited = new MockDelimited();
         mockDelimited.getTrack().setValue("123456");
         
-        mockDelimited.synchronizeObjectToText();
-
         assertEquals("123456|", mockDelimited.getLineText());
 	}
 

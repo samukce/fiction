@@ -11,8 +11,6 @@ public class Configuration {
         MockNoOrder mockNoOrder = new MockNoOrder();
         mockNoOrder.getTrack().setValue("123");
         mockNoOrder.getName().setValue("John");
-        
-        mockNoOrder.synchronizeObjectToText();
 
         assertEquals("   123John    ", mockNoOrder.getLineText());
 	}
