@@ -19,7 +19,6 @@ It abstracts the handling of texts that have a predefined formation.
 
 ```java
 MockPositional mockPositional = new MockPositional("123456John Foo");
-mockPositional.synchronizeTextToObject();
 
 assertEquals("123456", mockPositional.getTrack().getValue());
 assertEquals("John Foo", mockPositional.getName().getValue());
@@ -32,7 +31,6 @@ assertEquals("John Foo", mockPositional.getName().getValue());
 
 ```java
 MockDelimited mockDelimited = new MockDelimited("OBX|1|NM|Body Height||1.80");
-mockDelimited.synchronizeTextToObject();
 
 assertEquals("Body Height", mockDelimited.getDescription().getValue());
 assertEquals("1.80", mockDelimited.getResult().getValue());
