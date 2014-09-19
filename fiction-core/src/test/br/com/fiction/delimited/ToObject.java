@@ -15,11 +15,19 @@ public class ToObject {
 	}
 	
 	@Test
-	public void shouldBeEmptyFieldNotFilled() {
+	public void shouldBeEmptySecondFieldNotFilled() {
         MockDelimited mockDelimited = new MockDelimited("123456|");
 
         assertEquals("123456", mockDelimited.getTrack().getValue());
         assertEquals("", mockDelimited.getName().getValue());
+	}
+	
+	@Test
+	public void shouldBeEmptyFirstFieldNotFilled() {
+        MockDelimited mockDelimited = new MockDelimited("|John Foo");
+
+        assertEquals("", mockDelimited.getTrack().getValue());
+        assertEquals("John Foo", mockDelimited.getName().getValue());
 	}
 }
 
