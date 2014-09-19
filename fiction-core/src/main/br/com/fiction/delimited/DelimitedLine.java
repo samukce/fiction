@@ -60,6 +60,10 @@ public abstract class DelimitedLine extends Line {
 	private String getFieldValue(int index, String delimiter, String text) {
 		String[] arraySplit = text.split("\\" + delimiter);
 
+		if (arraySplit.length < index){
+			return "";
+		}
+		
 		return arraySplit[index - 1];
 	}
 }
