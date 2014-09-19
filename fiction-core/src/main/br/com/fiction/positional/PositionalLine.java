@@ -44,14 +44,6 @@ public abstract class PositionalLine extends Line {
 	public void add(Field positionalField) {
 		getPositionalFields().add((PositionalField)positionalField);
 	}
-
-	public void synchronizeTextToObject() {
-		textToObject();
-	}
-	
-	public void synchronizeObjectToText() {
-		objectToText();
-	}
 	
 	protected void objectToText() {
         StringBuilder newText = new StringBuilder();
@@ -60,11 +52,11 @@ public abstract class PositionalLine extends Line {
         	newText.append(positionalField.getValue());
         }
         
-        setLineText(newText.toString());
+        lineText = newText.toString();
     }
 	
-	protected void textToObject() {
-		String valueLineText = getLineText();
+	protected void textToObject(String lineText) {
+		String valueLineText = lineText;
 		
 		for (PositionalField positionalField : positionalFields) {
 

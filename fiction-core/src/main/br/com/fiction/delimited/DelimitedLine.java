@@ -44,13 +44,14 @@ public abstract class DelimitedLine extends Line {
 			}
 		}
 
-		setLineText(newText.toString());
+		lineText = newText.toString();
 	}
 
-	protected void textToObject() {
+	protected void textToObject(String lineText) {
 		for (DelimitedField delimitedField : delimitedFields) {
-			String value = getFieldValue(delimitedField.getIndex(),
-					delimitedField.getDelimiter(), getLineText());
+			String value = getFieldValue(delimitedField.getIndex(), 
+										 delimitedField.getDelimiter(), 
+										 lineText);
 
 			delimitedField.setValue(value);
 		}

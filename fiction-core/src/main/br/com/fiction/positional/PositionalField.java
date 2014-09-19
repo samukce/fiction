@@ -21,6 +21,9 @@ public class PositionalField extends Field {
 	}
 	
 	public String getValue() {
+		if (value == null)
+			return null;
+		
 		while (value.length() < length) {
 			if (alighRight) {
 				value = " " + value;
