@@ -28,7 +28,7 @@ public abstract class DelimitedLine extends Line {
 		return delimitedFields;
 	}
 
-	protected void objectToText() {
+	protected String objectToText() {
 		StringBuilder newText = new StringBuilder();
 
 		for (DelimitedField delimitedField : delimitedFields) {
@@ -44,7 +44,7 @@ public abstract class DelimitedLine extends Line {
 			}
 		}
 
-		lineText = newText.toString();
+		return newText.toString();
 	}
 
 	protected void textToObject(String lineText) {

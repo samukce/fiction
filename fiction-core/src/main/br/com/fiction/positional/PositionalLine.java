@@ -45,14 +45,14 @@ public abstract class PositionalLine extends Line {
 		getPositionalFields().add((PositionalField)positionalField);
 	}
 	
-	protected void objectToText() {
+	protected String objectToText() {
         StringBuilder newText = new StringBuilder();
 
         for (PositionalField positionalField : positionalFields) {
         	newText.append(positionalField.getValue());
         }
         
-        lineText = newText.toString();
+        return newText.toString();
     }
 	
 	protected void textToObject(String lineText) {
