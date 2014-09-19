@@ -1,16 +1,15 @@
 package main.br.com.fiction;
 
 public abstract class Line {
-	private String lineText;
 	
 	public Line() {
 		configure();
 	}
 	
 	public Line(String lineText) {
-		this.lineText = lineText;
-		
 		configure();
+		
+		setLineText(lineText);
 	}
 	
 	protected void configure() {
@@ -18,19 +17,11 @@ public abstract class Line {
 	}
 	
 	public String getLineText(){
-		return lineText;
+		return objectToText();
 	}
 	
 	public void setLineText(String lineText){
-		this.lineText = lineText;
-	}
-	
-	public void synchronizeTextToObject() {
-		textToObject();
-	}
-	
-	public void synchronizeObjectToText() {
-		objectToText();
+		textToObject(lineText);
 	}
 	
 	/**
@@ -49,9 +40,9 @@ public abstract class Line {
      */
 	protected abstract void registerFields(); 
 	
-	protected abstract void objectToText(); 
+	protected abstract String objectToText(); 
 	
-	protected abstract void textToObject();
+	protected abstract void textToObject(String lineText);
 	
 	public abstract void add(Field positionalField);
 }

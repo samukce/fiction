@@ -9,10 +9,17 @@ public class ToObject {
 	@Test
 	public void shouldSplitTheFields() {
         MockDelimited mockDelimited = new MockDelimited("123456|John Foo");
-        mockDelimited.synchronizeTextToObject();
 
         assertEquals("123456", mockDelimited.getTrack().getValue());
         assertEquals("John Foo", mockDelimited.getName().getValue());
+	}
+	
+	@Test
+	public void shouldBeEmptyFieldNotFilled() {
+        MockDelimited mockDelimited = new MockDelimited("123456|");
+
+        assertEquals("123456", mockDelimited.getTrack().getValue());
+        assertEquals("", mockDelimited.getName().getValue());
 	}
 }
 

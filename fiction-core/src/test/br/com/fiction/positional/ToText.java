@@ -11,8 +11,6 @@ public class ToText {
         MockPositional mockPositional = new MockPositional();
         mockPositional.getTrack().setValue("123456");
         mockPositional.getName().setValue("John Foo");
-        
-        mockPositional.synchronizeObjectToText();
 
         assertEquals("123456John Foo", mockPositional.getLineText());
 	}
@@ -22,8 +20,6 @@ public class ToText {
         MockPositional mockPositional = new MockPositional();
         mockPositional.getTrack().setValue("12345600000000000");
         mockPositional.getName().setValue("John Foooooooooooo");
-        
-        mockPositional.synchronizeObjectToText();
 
         assertEquals("123456John Foo", mockPositional.getLineText());
 	}
@@ -33,8 +29,6 @@ public class ToText {
         MockPositional mockPositional = new MockPositional();
         mockPositional.getTrack().setValue("123");
         mockPositional.getName().setValue("John Foo");
-        
-        mockPositional.synchronizeObjectToText();
 
         assertEquals("   123John Foo", mockPositional.getLineText());
 	}
@@ -45,8 +39,6 @@ public class ToText {
         mockPositional.getTrack().setValue("123");
         mockPositional.getName().setValue("John");
         
-        mockPositional.synchronizeObjectToText();
-
         assertEquals("   123John    ", mockPositional.getLineText());
 	}
 
@@ -55,8 +47,6 @@ public class ToText {
         MockNoOrder mockNoOrder = new MockNoOrder();
         mockNoOrder.getTrack().setValue("123");
         mockNoOrder.getName().setValue("John");
-        
-        mockNoOrder.synchronizeObjectToText();
 
         assertEquals("   123John    ", mockNoOrder.getLineText());
 	}

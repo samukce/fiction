@@ -28,7 +28,7 @@ public abstract class DelimitedLine extends Line {
 		return delimitedFields;
 	}
 
-	protected void objectToText() {
+	protected String objectToText() {
 		StringBuilder newText = new StringBuilder();
 
 		for (DelimitedField delimitedField : delimitedFields) {
@@ -44,13 +44,14 @@ public abstract class DelimitedLine extends Line {
 			}
 		}
 
-		setLineText(newText.toString());
+		return newText.toString();
 	}
 
-	protected void textToObject() {
+	protected void textToObject(String lineText) {
 		for (DelimitedField delimitedField : delimitedFields) {
-			String value = getFieldValue(delimitedField.getIndex(),
-					delimitedField.getDelimiter(), getLineText());
+			String value = getFieldValue(delimitedField.getIndex(), 
+										 delimitedField.getDelimiter(), 
+										 lineText);
 
 			delimitedField.setValue(value);
 		}
@@ -59,6 +60,10 @@ public abstract class DelimitedLine extends Line {
 	private String getFieldValue(int index, String delimiter, String text) {
 		String[] arraySplit = text.split("\\" + delimiter);
 
+		if (arraySplit.length < index){
+			return "";
+		}
+		
 		return arraySplit[index - 1];
 	}
 }
