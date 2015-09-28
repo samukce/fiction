@@ -18,9 +18,11 @@ public class MockDelimited extends DelimitedLine {
 	}
 
 	protected void registerFields() {
-		this.track = new DelimitedField(this, 1, "|");
-		this.name = new DelimitedField(this, 2, "|");
-		this.fiveField = new DelimitedField(this, 5, "|");
+		setDelimiter('|');
+		
+		this.track = new DelimitedField(this, 1);
+		this.name = new DelimitedField(this, 2);
+		this.fiveField = new DelimitedField(this, 5);
 	}
 
 	public DelimitedField getTrack() {

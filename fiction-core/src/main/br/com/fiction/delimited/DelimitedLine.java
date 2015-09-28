@@ -8,6 +8,7 @@ import main.br.com.fiction.Line;
 
 public abstract class DelimitedLine extends Line {
 	private List<DelimitedField> delimitedFields;
+	private char delimiter;
 
 	public DelimitedLine() {
 		super();
@@ -31,25 +32,18 @@ public abstract class DelimitedLine extends Line {
 	protected String objectToText() {
 		StringBuilder newText = new StringBuilder();
 
-		int beforeFieldPosition = 1000;
+		int beforeFieldPosition = Integer.MAX_VALUE;
+		
 		for (DelimitedField delimitedField : delimitedFields) {
 			String valueField = delimitedField.getValue();
 
-			
-			int indexDelimited = delimitedFields.indexOf(delimitedField);
-			
 			for (int i = beforeFieldPosition; i < delimitedField.getIndex() ; i++) {
-				newText.append(delimitedField.getDelimiter());
+				newText.append(getDelimiter());
 			}
 			beforeFieldPosition = delimitedField.getIndex();
 			
 			if (valueField != null)
 				newText.append(delimitedField.getValue());
-
-			
-			//if (indexDelimited < delimitedFields.size() - 1) {
-			//	newText.append(delimitedField.getDelimiter());
-			//}
 		}
 
 		return newText.toString();
@@ -58,14 +52,14 @@ public abstract class DelimitedLine extends Line {
 	protected void textToObject(String lineText) {
 		for (DelimitedField delimitedField : delimitedFields) {
 			String value = getFieldValue(delimitedField.getIndex(), 
-										 delimitedField.getDelimiter(), 
+										 getDelimiter(), 
 										 lineText);
 
 			delimitedField.setValue(value);
 		}
 	}
 
-	private String getFieldValue(int index, String delimiter, String text) {
+	private String getFieldValue(int index, char delimiter, String text) {
 		String[] arraySplit = text.split("\\" + delimiter);
 
 		if (arraySplit.length < index){
@@ -74,4 +68,13 @@ public abstract class DelimitedLine extends Line {
 		
 		return arraySplit[index - 1];
 	}
+
+	public char getDelimiter() {
+		return delimiter;
+	}
+
+	public void setDelimiter(char delimiter) {
+		this.delimiter = delimiter;
+	}
+
 }
