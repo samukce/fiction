@@ -31,17 +31,25 @@ public abstract class DelimitedLine extends Line {
 	protected String objectToText() {
 		StringBuilder newText = new StringBuilder();
 
+		int beforeFieldPosition = 1000;
 		for (DelimitedField delimitedField : delimitedFields) {
 			String valueField = delimitedField.getValue();
 
+			
+			int indexDelimited = delimitedFields.indexOf(delimitedField);
+			
+			for (int i = beforeFieldPosition; i < delimitedField.getIndex() ; i++) {
+				newText.append(delimitedField.getDelimiter());
+			}
+			beforeFieldPosition = delimitedField.getIndex();
+			
 			if (valueField != null)
 				newText.append(delimitedField.getValue());
 
-			int indexDelimited = delimitedFields.indexOf(delimitedField);
-
-			if (indexDelimited < delimitedFields.size() - 1) {
-				newText.append(delimitedField.getDelimiter());
-			}
+			
+			//if (indexDelimited < delimitedFields.size() - 1) {
+			//	newText.append(delimitedField.getDelimiter());
+			//}
 		}
 
 		return newText.toString();
