@@ -29,5 +29,12 @@ public class ToObject {
         assertEquals("", mockDelimited.getTrack().getValue());
         assertEquals("John Foo", mockDelimited.getName().getValue());
 	}
+	
+	@Test
+	public void shouldBeFillFieldFiveAfterEmptiesFields() {
+        MockDelimited mockDelimited = new MockDelimited("||||Five Content");
+
+        assertEquals("Five Content", mockDelimited.getFiveField().getValue());
+	}
 }
 
